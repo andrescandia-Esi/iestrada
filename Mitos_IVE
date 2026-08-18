@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitos y Verdades - Ley 27.610</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #4f46e5;
+            text-align: center;
+            max-width: 800px;
+        }
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #555;
+            max-width: 600px;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        .statement {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        button {
+            flex: 1;
+            padding: 10px 15px;
+            font-size: 1em;
+            font-weight: bold;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-mito {
+            background-color: #fee2e2;
+            color: #dc2626;
+            border-color: #fca5a5;
+        }
+        .btn-mito:hover:not(:disabled) {
+            background-color: #fca5a5;
+            color: white;
+        }
+        .btn-verdad {
+            background-color: #d1fae5;
+            color: #059669;
+            border-color: #6ee7b7;
+        }
+        .btn-verdad:hover:not(:disabled) {
+            background-color: #6ee7b7;
+            color: white;
+        }
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        .feedback {
+            display: none;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f8fafc;
+            border-left: 4px solid #4f46e5;
+            margin-top: 10px;
+            animation: fadeIn 0.5s;
+        }
+        .feedback p {
+            margin: 5px 0;
+            line-height: 1.4;
+        }
+        .result-title {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .correct { color: #059669; }
+        .incorrect { color: #dc2626; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dinámica Interactiva: Mitos y Verdades</h1>
+    <p class="intro">Lee cada una de las siguientes afirmaciones sobre la IVE/ILE (Ley 27.610) y el rol docente, y selecciona si crees que es un MITO o una VERDAD. ¡Descubre la respuesta correcta!</p>
+
+    <div class="container">
+        
+        <!-- Tarjeta 1 -->
+        <div class="card" data-correct="mito">
+            <div class="statement">1. "Para acceder a un aborto legal antes de la semana 14, la persona gestante debe explicar y justificar ante el médico o el directivo de la escuela por qué quiere interrumpir el embarazo."</div>
+            <div class="buttons">
+                <button class="btn-mito" onclick="checkAnswer(this, 'mito')">Es un MITO</button>
+                <button class="btn-verdad" onclick="checkAnswer(this, 'verdad')">Es VERDAD</button>
+            </div>
+            <div class="feedback">
+                <p class="result-title"></p>
+                <p><strong>Respuesta correcta: MITO ❌</strong></p>
+                <p>Hasta la semana 14 inclusive, la ley establece que es una Interrupción Voluntaria del Embarazo (IVE). Esto significa que la decisión es íntima y personal, y nadie (ni médicos, ni docentes, ni familiares) puede exigirle a la adolescente que explique sus motivos. Solo debe firmar un consentimiento informado.</p>
+            </div>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="card" data-correct="mito">
+            <div class="statement">2. "Si una alumna de 14 años quiere acceder a una IVE, el hospital le va a exigir obligatoriamente que vaya acompañada de su mamá, papá o tutor legal para que firmen la autorización."</div>
+            <div class="buttons">
+                <button class="btn-mito" onclick="checkAnswer(this, 'mito')">Es un MITO</button>
+                <button class="btn-verdad" onclick="checkAnswer(this, 'verdad')">Es VERDAD</button>
+            </div>
+            <div class="feedback">
+                <p class="result-title"></p>
+                <p><strong>Respuesta correcta: MITO ❌</strong></p>
+                <p>El Artículo 8 de la ley establece que a partir de los 13 años y hasta los 16, las y los adolescentes tienen autonomía para decidir y consentir por sí mismos prácticas médicas que no representen un riesgo grave para su vida. Solo si el procedimiento fuera de riesgo requerirían el asentimiento de un adulto. A partir de los 16 años, tienen plena capacidad.</p>
+            </div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="card" data-correct="mito">
+            <div class="statement">3. "Si una estudiante le confía a un profesor que está embarazada y quiere abortar, el profesor tiene la obligación legal de llamar inmediatamente a los padres para avisarles."</div>
+            <div class="buttons">
+                <button class="btn-mito" onclick="checkAnswer(this, 'mito')">Es un MITO</button>
+                <button class="btn-verdad" onclick="checkAnswer(this, 'verdad')">Es VERDAD</button>
+            </div>
+            <div class="feedback">
+                <p class="result-title"></p>
+                <p><strong>Respuesta correcta: MITO ❌</strong></p>
+                <p>El derecho a la confidencialidad y privacidad está garantizado por ley. Romper ese secreto profesional puede poner en riesgo a la adolescente (especialmente si el embarazo es producto de un abuso intrafamiliar). El rol del docente es contener, dar información (como el 0800-222-3444) y articular de forma reservada con el Equipo de Orientación Escolar o un centro de salud.</p>
+            </div>
+        </div>
+
+        <!-- Tarjeta 4 -->
+        <div class="card" data-correct="mito">
+            <div class="statement">4. "Si el embarazo es producto de una violación y ya pasaron las 14 semanas, la persona gestante debe presentar la denuncia policial para poder acceder a la interrupción legal (ILE)."</div>
+            <div class="buttons">
+                <button class="btn-mito" onclick="checkAnswer(this, 'mito')">Es un MITO</button>
+                <button class="btn-verdad" onclick="checkAnswer(this, 'verdad')">Es VERDAD</button>
+            </div>
+            <div class="feedback">
+                <p class="result-title"></p>
+                <p><strong>Respuesta correcta: MITO ❌</strong></p>
+                <p>Nunca se exige denuncia policial ni judicial. Para acceder a una ILE por causal violación, la ley solo requiere que la persona firme una Declaración Jurada. En niñas menores de 13 años, la declaración jurada ni siquiera es necesaria, ya que todo embarazo en esa edad se presume producto de abuso y es causal de ILE.</p>
+            </div>
+        </div>
+
+        <!-- Tarjeta 5 -->
+        <div class="card" data-correct="verdad">
+            <div class="statement">5. "La ley 27.610 permite interrumpir el embarazo en cualquier momento de la gestación, sin límite de semanas, si la salud integral de la persona gestante está en riesgo."</div>
+            <div class="buttons">
+                <button class="btn-mito" onclick="checkAnswer(this, 'mito')">Es un MITO</button>
+                <button class="btn-verdad" onclick="checkAnswer(this, 'verdad')">Es VERDAD</button>
+            </div>
+            <div class="feedback">
+                <p class="result-title"></p>
+                <p><strong>Respuesta correcta: VERDAD ✅</strong></p>
+                <p>La IVE (sin causales) tiene un límite de 14 semanas inclusive. Sin embargo, la ILE (por causal de salud física, mental o social, o por violación) no tiene límite de plazo estipulado. El concepto de "salud integral" incluye el bienestar emocional y social de la adolescente.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function checkAnswer(button, selectedAnswer) {
+            // Encontrar la tarjeta correspondiente
+            const card = button.closest('.card');
+            const correctAnswer = card.getAttribute('data-correct');
+            const feedbackDiv = card.querySelector('.feedback');
+            const titleP = feedbackDiv.querySelector('.result-title');
+            
+            // Deshabilitar los botones de esta tarjeta
+            const buttons = card.querySelectorAll('button');
+            buttons.forEach(btn => btn.disabled = true);
+
+            // Resaltar el botón seleccionado
+            if(selectedAnswer === 'mito') {
+                button.style.backgroundColor = '#fca5a5';
+                button.style.color = 'white';
+            } else {
+                button.style.backgroundColor = '#6ee7b7';
+                button.style.color = 'white';
+            }
+
+            // Verificar si acertó
+            if (selectedAnswer === correctAnswer) {
+                titleP.innerHTML = '¡Correcto! 🎉';
+                titleP.className = 'result-title correct';
+            } else {
+                titleP.innerHTML = 'Incorrecto 💡';
+                titleP.className = 'result-title incorrect';
+            }
+
+            // Mostrar el feedback
+            feedbackDiv.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
